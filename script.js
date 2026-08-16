@@ -5,54 +5,68 @@ const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
 const revealElements = document.querySelectorAll('.reveal');
 
 window.addEventListener('load', () => {
-  window.setTimeout(() => bootScreen.classList.add('done'), 650);
+  if (bootScreen) window.setTimeout(() => bootScreen.classList.add('done'), 650);
 });
 
-menuButton.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.textContent = open ? 'Close' : 'Menu';
-});
+if (menuButton && mobileNav) {
+  menuButton.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.textContent = open ? 'Close' : 'Menu';
+  });
+}
 
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
-    mobileNav.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.textContent = 'Menu';
-  });
-});
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+    mobileNav?.classList.remove('open');
+    if (menuButton) {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = 'Menu';
     }
   });
-}, { threshold: 0.12 });
+});
 
-revealElements.forEach((element) => revealObserver.observe(element));
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add('visible'));
+}
 
 const sections = document.querySelectorAll('section[id], header[id]');
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    document.querySelectorAll('.desktop-nav a').forEach((link) => {
-      link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+const localDesktopLinks = document.querySelectorAll('.desktop-nav a[href^="#"]');
+if ('IntersectionObserver' in window && localDesktopLinks.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      localDesktopLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
     });
-  });
-}, { rootMargin: '-35% 0px -55%', threshold: 0 });
+  }, { rootMargin: '-35% 0px -55%', threshold: 0 });
 
-sections.forEach((section) => sectionObserver.observe(section));
+  sections.forEach((section) => sectionObserver.observe(section));
+}
 
 const labStack = document.querySelector('.lab-stack');
-document.querySelector('#shuffle-lab').addEventListener('click', () => {
-  const cards = [...labStack.children];
-  cards.sort(() => Math.random() - 0.5).forEach((card) => labStack.appendChild(card));
-  cards.forEach((card, index) => {
-    card.animate(
-      [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
-      { duration: 350, delay: index * 55, easing: 'ease-out' }
-    );
+const shuffleButton = document.querySelector('#shuffle-lab');
+if (labStack && shuffleButton) {
+  shuffleButton.addEventListener('click', () => {
+    const cards = [...labStack.children];
+    cards.sort(() => Math.random() - 0.5).forEach((card) => labStack.appendChild(card));
+    cards.forEach((card, index) => {
+      card.animate(
+        [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 350, delay: index * 55, easing: 'ease-out' }
+      );
+    });
   });
-});
+}
