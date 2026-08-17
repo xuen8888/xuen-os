@@ -49,10 +49,33 @@
       </div>
 
       <figure class="workspace-visual reveal">
-        <div class="workspace-photo">
-          <img src="assets/workspace-editorial-v1.png" alt="A quiet sunlit workspace with a closed silver laptop on a pale oak desk" width="1122" height="1402" fetchpriority="high">
+        <div class="workspace-photo system-visual" role="img" aria-label="A calm animated XUEN.OS system map with connected technical nodes">
+          <div class="system-grid" aria-hidden="true"></div>
+          <svg class="system-connections" viewBox="0 0 600 720" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M300 360 L145 182 L78 182"></path>
+            <path d="M300 360 L468 154 L548 154"></path>
+            <path d="M300 360 L128 522 L55 522"></path>
+            <path d="M300 360 L474 546 L554 546"></path>
+            <path d="M145 182 L128 522"></path>
+            <path d="M468 154 L474 546"></path>
+            <circle class="travel-signal" r="3">
+              <animateMotion dur="18s" repeatCount="indefinite" path="M145 182 L300 360" keyPoints="0;1;1" keyTimes="0;.72;1" calcMode="linear"></animateMotion>
+              <animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.08;.12;.7;.76;1"></animate>
+            </circle>
+          </svg>
+          <div class="system-node node-ai" data-parallax-depth="0.35" aria-hidden="true"><span>01 / INPUT</span><b class="node-label-cycle"><span>AI</span><span>PROMPT</span><span>MODEL</span></b><i></i></div>
+          <div class="system-node node-python" data-parallax-depth="0.5" aria-hidden="true"><span>02 / LOGIC</span><b class="node-label-cycle"><span>PYTHON</span><span>SCRIPT</span><span>AUTOMATE</span></b><i></i></div>
+          <div class="system-node node-systems" data-parallax-depth="0.42" aria-hidden="true"><span>03 / LAYER</span><b class="node-label-cycle"><span>SYSTEMS</span><span>FLOW</span><span>STATE</span></b><i></i></div>
+          <div class="system-node node-tools" data-parallax-depth="0.58" aria-hidden="true"><span>04 / OUTPUT</span><b class="node-label-cycle"><span>TOOLS</span><span>ACTION</span><span>OUTPUT</span></b><i></i></div>
+          <div class="system-core" data-parallax-depth="0.8" aria-hidden="true"><span>X</span><small>XUEN.OS</small></div>
+          <div class="system-live-status" aria-hidden="true"><span>READY</span><span>ROUTING</span><span>PROCESSING</span><span>IDLE</span></div>
+          <span class="signal-dot dot-one" aria-hidden="true"></span>
+          <span class="signal-dot dot-two" aria-hidden="true"></span>
+          <span class="signal-dot dot-three" aria-hidden="true"></span>
+          <div class="system-readout" aria-hidden="true"><span>ACTIVE SIGNAL</span><b>04</b></div>
+          <div class="system-label-cycle" aria-hidden="true"><span>AI</span><span>PYTHON</span><span>SYSTEMS</span><span>TOOLS</span></div>
         </div>
-        <figcaption><span>01 / THE WORKSPACE</span><span>NATURAL LIGHT · QUIET TOOLS</span></figcaption>
+        <figcaption><span>01 / THE SYSTEM</span><span>CALM MOTION · LIVE SIGNALS</span></figcaption>
       </figure>
     </section>
 
@@ -139,6 +162,6 @@
     <div><span>© 2026 XUEN</span><a href="#home">BACK TO TOP ↑</a></div>
   </footer>
 
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

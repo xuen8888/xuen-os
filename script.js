@@ -70,3 +70,49 @@ if (labStack && shuffleButton) {
     });
   });
 }
+
+const systemVisual = document.querySelector('.system-visual');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (systemVisual && !reducedMotion.matches) {
+  const parallaxLayers = [...systemVisual.querySelectorAll('[data-parallax-depth]')];
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let parallaxFrame;
+
+  const renderParallax = () => {
+    currentX += (targetX - currentX) * 0.075;
+    currentY += (targetY - currentY) * 0.075;
+
+    parallaxLayers.forEach((layer) => {
+      const depth = Number(layer.dataset.parallaxDepth);
+      layer.style.setProperty('--parallax-x', `${(currentX * depth).toFixed(2)}px`);
+      layer.style.setProperty('--parallax-y', `${(currentY * depth).toFixed(2)}px`);
+    });
+
+    if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01) {
+      parallaxFrame = window.requestAnimationFrame(renderParallax);
+    } else {
+      parallaxFrame = undefined;
+    }
+  };
+
+  const queueParallax = () => {
+    if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(renderParallax);
+  };
+
+  systemVisual.addEventListener('pointermove', (event) => {
+    const bounds = systemVisual.getBoundingClientRect();
+    targetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 10;
+    targetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 8;
+    queueParallax();
+  });
+
+  systemVisual.addEventListener('pointerleave', () => {
+    targetX = 0;
+    targetY = 0;
+    queueParallax();
+  });
+}
