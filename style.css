@@ -199,10 +199,6 @@ h2 { font-size: clamp(60px, 7.3vw, 116px); line-height: .91; letter-spacing: -.0
 .project-link-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
 .project-link-card .project-info > span { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
 .project-link-card .project-info b { color: var(--ink); font-weight: 500; white-space: nowrap; }
-.sofa-project-visual { height: clamp(300px, 38vw, 560px); background: #f7f5f0; }
-.sofa-project-visual img { width: 100%; height: 100%; display: block; object-fit: contain; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
-.project-link-card:hover .sofa-project-visual img { transform: scale(1.015); }
-
 .lab { background: #191918; color: var(--paper); }
 .lab .section-index { color: #888; }
 .lab .section-index span { color: var(--paper); }
@@ -225,7 +221,7 @@ h2 { font-size: clamp(60px, 7.3vw, 116px); line-height: .91; letter-spacing: -.0
 footer { padding: 46px 4.8vw; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font: 7px var(--mono); color: var(--muted); }
 footer > div { justify-self: end; display: flex; gap: 24px; }
 
-/* Sofa Dimension System case study */
+/* Case study system */
 .case-study { border-bottom: 1px solid var(--line); }
 .case-hero { min-height: calc(100vh - 88px); padding: clamp(58px, 6vw, 100px) 4.8vw clamp(100px, 10vw, 170px); display: flex; flex-direction: column; justify-content: space-between; border-bottom: 1px solid var(--line); }
 .case-kicker { display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(90px, 12vw, 180px); color: var(--muted); font: 8px var(--mono); letter-spacing: .12em; }
@@ -327,6 +323,33 @@ footer > div { justify-self: end; display: flex; gap: 24px; }
 .project-navigation span { color: var(--muted); font: 8px var(--mono); letter-spacing: .12em; }
 .project-navigation strong { font-size: clamp(27px, 3vw, 48px); font-weight: 500; letter-spacing: -.05em; }
 
+/* X Garage project + case study */
+.xgarage-project-visual { height: clamp(340px, 42vw, 600px); overflow: hidden; background: #101d27; }
+.xgarage-project-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .65s cubic-bezier(.2,.7,.2,1); }
+.project-link-card:hover .xgarage-project-visual img { transform: scale(1.012); }
+.xgarage-case-title { letter-spacing: -.075em; }
+.case-live-link { display: flex; justify-content: space-between; align-items: center; margin-top: 38px; padding: 18px 20px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 8px var(--mono); letter-spacing: .1em; transition: transform .25s, box-shadow .25s; }
+.case-live-link:hover, .case-live-link:focus-visible { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(23,23,21,.13); outline: none; }
+.xgarage-showcase-section { background: #e4e8ea; }
+.xgarage-browser { overflow: hidden; border: 1px solid rgba(8,17,24,.18); background: #0f1720; box-shadow: 0 35px 80px rgba(24,38,48,.18); }
+.xgarage-browser img { width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; object-position: center top; }
+.xgarage-feature-section { background: var(--paper-deep); }
+.xgarage-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(23,23,21,.2); border-left: 1px solid rgba(23,23,21,.2); }
+.xgarage-feature-grid article { min-height: 320px; padding: 24px; display: flex; flex-direction: column; border-right: 1px solid rgba(23,23,21,.2); border-bottom: 1px solid rgba(23,23,21,.2); background: rgba(255,255,255,.34); transition: background .25s; }
+.xgarage-feature-grid article:hover { background: #fdfcf9; }
+.xgarage-feature-grid article > span { color: var(--muted); font: 8px var(--mono); letter-spacing: .08em; }
+.xgarage-feature-grid h3 { margin: auto 0 17px; font-size: clamp(25px, 2.5vw, 42px); line-height: 1; letter-spacing: -.055em; font-weight: 550; }
+.xgarage-feature-grid p { max-width: 310px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+.xgarage-spec-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+.xgarage-spec-grid article { min-height: 260px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.xgarage-spec-grid strong { font-size: clamp(48px, 5vw, 80px); font-weight: 500; letter-spacing: -.07em; }
+.xgarage-spec-grid strong small { font: 10px var(--mono); letter-spacing: .04em; }
+.xgarage-spec-grid span { color: var(--muted); font: 7px/1.55 var(--mono); letter-spacing: .08em; }
+.xgarage-live-cta { min-height: 70vh; padding: clamp(90px, 10vw, 170px) 4.8vw; display: flex; flex-direction: column; justify-content: space-between; background: #17242e; color: #f3f5f5; }
+.xgarage-live-cta .eyebrow { color: rgba(255,255,255,.54); }
+.xgarage-live-cta > a { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px solid #f3f5f5; font-size: clamp(64px, 12vw, 185px); line-height: 1; font-weight: 500; letter-spacing: -.085em; }
+.xgarage-live-cta > a span { font-size: .22em; }
+
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -347,6 +370,8 @@ footer > div { justify-self: end; display: flex; gap: 24px; }
   .system-type-card { min-height: 310px; }
   .measurement-interface { grid-template-columns: repeat(3, 1fr); }
   .push-back-layout { grid-template-columns: 1fr; }
+  .xgarage-feature-grid { grid-template-columns: 1fr 1fr; }
+  .xgarage-spec-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -377,7 +402,7 @@ footer > div { justify-self: end; display: flex; gap: 24px; }
   .project-info { grid-template-columns: 1fr; }
   .project-info > span { grid-column: 1; }
   .project-link-card .project-info > span { align-items: start; flex-direction: column; }
-  .sofa-project-visual { height: 260px; }
+  .xgarage-project-visual { height: auto; aspect-ratio: 1 / 1; }
   .lab-layout { grid-template-columns: 1fr; gap: 70px; }
   .lab-stack article { grid-template-columns: 55px 1fr auto; }
   .contact { min-height: 55vh; }
@@ -414,6 +439,14 @@ footer > div { justify-self: end; display: flex; gap: 24px; }
   .outcome-copy > p { font-size: 15vw; }
   .project-navigation { grid-template-columns: 1fr; }
   .project-navigation a { min-height: 170px; padding: 35px 20px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .xgarage-showcase-section { padding-left: 0; padding-right: 0; }
+  .xgarage-browser { border-left: 0; border-right: 0; }
+  .xgarage-feature-grid { grid-template-columns: 1fr; }
+  .xgarage-feature-grid article { min-height: 240px; }
+  .xgarage-spec-grid { grid-template-columns: 1fr 1fr; }
+  .xgarage-spec-grid article { min-height: 180px; }
+  .xgarage-live-cta { min-height: 52vh; padding: 85px 20px; }
+  .xgarage-live-cta > a { font-size: 17vw; }
 }
 
 @media (prefers-reduced-motion: reduce) {

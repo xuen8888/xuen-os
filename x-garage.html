@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="X Garage — an expanding interactive 3D vehicle platform by XUEN.OS.">
+  <meta name="theme-color" content="#f2f1ed">
+  <title>X Garage — XUEN.OS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="boot-screen" aria-hidden="true">
+    <div class="boot-mark">X</div>
+    <div class="boot-line"><span></span></div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html#home" aria-label="XUEN.OS home">
+      <span class="logo-glyph">X</span><span>XUEN.OS</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html#home">Home</a>
+      <a class="active" href="index.html#projects">Projects</a>
+      <a href="index.html#lab">Lab</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-status"><span class="status-dot"></span> SYSTEM ONLINE</div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html#home">Home</a><a href="index.html#projects">Projects</a><a href="index.html#lab">Lab</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a>
+  </nav>
+
+  <main class="case-study xgarage-case">
+    <section class="case-hero" aria-labelledby="case-title">
+      <div class="case-kicker reveal">
+        <a href="index.html#projects">← SELECTED PROJECTS</a>
+        <span>04 / 2026</span>
+      </div>
+      <div class="case-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">INTERACTIVE 3D / VEHICLE PLATFORM</p>
+          <h1 class="case-title xgarage-case-title" id="case-title">X<br>Garage</h1>
+        </div>
+        <div class="case-summary reveal">
+          <p class="ai-label">EXPANDING VEHICLE LIBRARY / LIVE BUILD</p>
+          <p>A growing digital garage designed to let people explore each vehicle through configurable, cinematic 3D experiences.</p>
+          <a class="case-live-link" href="https://xgarage.xuenlab.workers.dev" target="_blank" rel="noopener noreferrer">VIEW LIVE EXPERIENCE <span>↗</span></a>
+          <div class="case-meta">
+            <span><b>TYPE</b>Interactive Vehicle Platform</span>
+            <span><b>FOCUS</b>Reusable 3D / Interaction / Visual Direction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section xgarage-showcase-section" aria-label="X Garage interface preview">
+      <figure class="technical-figure xgarage-browser reveal">
+        <img src="assets/x-garage/x-garage-live.png" alt="Live 3D vehicle scene from the current X Garage experience" width="1000" height="625">
+        <figcaption><span>LIVE PROJECT SCENE / CURRENT VEHICLE BUILD</span><span>XGARAGE.XUENLAB.WORKERS.DEV</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section case-text-section" id="intent">
+      <div class="case-index reveal"><span>01</span> / INTENT</div>
+      <div class="case-copy reveal">
+        <h2>Build a garage that can grow with every vehicle.</h2>
+        <div class="case-columns">
+          <p>Most automotive showcases are designed as one-off pages around a single model. X Garage is built as a reusable platform where the vehicle changes, but the interaction language stays familiar.</p>
+          <p>Each machine receives its own real-time scene, story, specifications, and configurable states within one consistent garage designed to expand over time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section xgarage-feature-section" id="experience">
+      <div class="case-section-head reveal">
+        <div class="case-index"><span>02</span> / EXPERIENCE</div>
+        <p>A shared interaction language makes every new vehicle easy to explore while leaving room for model-specific details.</p>
+      </div>
+      <div class="xgarage-feature-grid reveal">
+        <article><span>01 / LIBRARY</span><h3>Choose the next machine.</h3><p>A growing collection keeps every vehicle accessible from one consistent starting point.</p></article>
+        <article><span>02 / VIEW</span><h3>Explore every angle.</h3><p>Drag-to-rotate, zoom, and dedicated camera views reveal the proportions of each vehicle.</p></article>
+        <article><span>03 / CONFIGURE</span><h3>Make it personal.</h3><p>Colour, finish, access, and model-specific options update the active vehicle live.</p></article>
+        <article><span>04 / LIGHT</span><h3>Control the atmosphere.</h3><p>Lighting states and welcome sequences turn functional controls into deliberate moments.</p></article>
+        <article><span>05 / STUDY</span><h3>Read the surface.</h3><p>A focused study mode strips away distraction to reveal form, proportion, and stance.</p></article>
+        <article><span>06 / STORY</span><h3>Go beyond the model.</h3><p>Specifications, engineering details, and credits give each vehicle its own narrative layer.</p></article>
+      </div>
+    </section>
+
+    <section class="case-section process-section" id="interaction-system">
+      <div class="case-section-head reveal">
+        <div class="case-index"><span>03</span> / INTERACTION SYSTEM</div>
+        <p>A small set of controls maps to a broad range of visible states without turning the interface into a dashboard.</p>
+      </div>
+      <ol class="process-timeline reveal">
+        <li><span>01</span><div><h3>Start with the vehicle</h3><p>The active machine occupies the main visual field, with typography and controls arranged around it instead of over it.</p></div></li>
+        <li><span>02</span><div><h3>Keep cause and effect close</h3><p>Configuration, access, lighting, and camera controls respond in the same scene, making every choice easy to understand.</p></div></li>
+        <li><span>03</span><div><h3>Reuse the interaction language</h3><p>Shared patterns make new additions feel immediately familiar without erasing the character of each vehicle.</p></div></li>
+        <li><span>04</span><div><h3>Support deeper inspection</h3><p>Study modes, specifications, engineering notes, and credits add context for people who want more detail.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="case-section xgarage-spec-section" id="platform-system">
+      <div class="case-section-head reveal">
+        <div class="case-index"><span>04</span> / PLATFORM SYSTEM</div>
+        <p>Four reusable layers make it possible to add new vehicles without rebuilding the entire experience.</p>
+      </div>
+      <div class="xgarage-spec-grid reveal" aria-label="X Garage reusable platform layers">
+        <article><strong>01</strong><span>VEHICLE CORE / MODEL / MATERIALS / ANIMATED PARTS</span></article>
+        <article><strong>02</strong><span>CONFIG LAYER / COLOUR / ACCESS / LIGHTING STATES</span></article>
+        <article><strong>03</strong><span>SCENE SYSTEM / CAMERA / ENVIRONMENT / PRESENTATION</span></article>
+        <article><strong>04</strong><span>CONTENT LAYER / STORY / SPECIFICATIONS / CREDITS</span></article>
+      </div>
+    </section>
+
+    <section class="case-section outcome-section" id="outcome">
+      <div class="case-index reveal"><span>05</span> / OUTCOME</div>
+      <div class="outcome-copy reveal">
+        <p>One garage.<br>More vehicles.<br><em>A growing experience.</em></p>
+        <div>
+          <p>X Garage turns separate vehicle showcases into one scalable library: cinematic enough to create desire, structured enough to explain each machine, and flexible enough to grow with every new addition.</p>
+          <div class="outcome-tags"><span>EXPANDABLE</span><span>CONFIGURABLE</span><span>IMMERSIVE</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="xgarage-live-cta">
+      <span class="eyebrow">LIVE PROJECT / XGARAGE.XUENLAB.WORKERS.DEV</span>
+      <a href="https://xgarage.xuenlab.workers.dev" target="_blank" rel="noopener noreferrer">ENTER X GARAGE <span>↗</span></a>
+    </section>
+
+    <nav class="project-navigation" aria-label="Project navigation">
+      <a href="index.html#projects"><span>← BACK TO</span><strong>Selected Projects</strong></a>
+      <a href="#case-title"><span>RETURN TO →</span><strong>Top</strong></a>
+    </nav>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html#home"><span class="logo-glyph">X</span><span>XUEN.OS</span></a>
+    <p>DESIGNED &amp; BUILT WITH INTENTION.</p>
+    <div><span>© 2026 XUEN</span><a href="#case-title">BACK TO TOP ↑</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
