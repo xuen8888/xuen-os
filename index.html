@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="XUEN.OS — Building useful things with AI, Python, and curiosity.">
-  <meta name="theme-color" content="#f2f1ed">
+  <meta name="theme-color" content="#020204">
   <title>XUEN.OS — Personal Operating System</title>
+  <link rel="preload" href="fonts/GFS-Didot-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/liquid-glass-ribbon-v2.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +16,9 @@
     <div class="boot-line"><span></span></div>
   </div>
 
-  <header class="site-header" id="home">
-    <a class="logo" href="#home" aria-label="XUEN.OS home">
-      <span class="logo-glyph">X</span><span>XUEN.OS</span>
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="XuenLab home">
+      <img src="assets/xuenlab-logo-light.svg" alt="XuenLab" width="300" height="83">
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a class="active" href="#home">Home</a>
@@ -34,49 +36,30 @@
   </nav>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">PERSONAL OPERATING SYSTEM <span>V.01</span></p>
-        <h1 id="hero-title">XUEN<span class="outline">.</span>OS</h1>
-        <p class="hero-subtitle">Building useful things with <strong>AI</strong>, <strong>Python</strong>, and curiosity.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#about">ENTER SYSTEM <span>↗</span></a>
-          <a class="button button-secondary" href="#projects">VIEW PROJECTS <span>↓</span></a>
-        </div>
-        <div class="hero-meta">
-          <span>BASED IN MALAYSIA</span><span>AVAILABLE FOR SELECTED WORK</span>
+    <section class="glass-hero" id="home" aria-labelledby="hero-title">
+      <div class="glass-hero__art" aria-hidden="true">
+        <div class="glass-hero__plate"></div>
+        <canvas class="glass-hero__flow" id="glass-flow"></canvas>
+        <div class="glass-hero__shade"></div>
+      </div>
+
+      <div class="glass-hero__ornaments" aria-hidden="true"><i></i></div>
+
+      <div class="glass-hero__content">
+        <p class="glass-hero__eyebrow">Personal operating system <span>V.01</span></p>
+        <h1 id="hero-title">XUEN.OS</h1>
+        <p class="glass-hero__subtitle">Building practical tools and systems with AI, Python, and curiosity.</p>
+        <div class="glass-hero__actions" aria-label="Primary actions">
+          <a class="glass-hero__button" href="#projects">
+            <span>Explore Projects</span><span class="glass-hero__arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
 
-      <figure class="workspace-visual reveal">
-        <div class="workspace-photo system-visual" role="img" aria-label="A calm animated XUEN.OS system map with connected technical nodes">
-          <div class="system-grid" aria-hidden="true"></div>
-          <svg class="system-connections" viewBox="0 0 600 720" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M300 360 L145 182 L78 182"></path>
-            <path d="M300 360 L468 154 L548 154"></path>
-            <path d="M300 360 L128 522 L55 522"></path>
-            <path d="M300 360 L474 546 L554 546"></path>
-            <path d="M145 182 L128 522"></path>
-            <path d="M468 154 L474 546"></path>
-            <circle class="travel-signal" r="3">
-              <animateMotion dur="18s" repeatCount="indefinite" path="M145 182 L300 360" keyPoints="0;1;1" keyTimes="0;.72;1" calcMode="linear"></animateMotion>
-              <animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.08;.12;.7;.76;1"></animate>
-            </circle>
-          </svg>
-          <div class="system-node node-ai" data-parallax-depth="0.35" aria-hidden="true"><span>01 / INPUT</span><b class="node-label-cycle"><span>AI</span><span>PROMPT</span><span>MODEL</span></b><i></i></div>
-          <div class="system-node node-python" data-parallax-depth="0.5" aria-hidden="true"><span>02 / LOGIC</span><b class="node-label-cycle"><span>PYTHON</span><span>SCRIPT</span><span>AUTOMATE</span></b><i></i></div>
-          <div class="system-node node-systems" data-parallax-depth="0.42" aria-hidden="true"><span>03 / LAYER</span><b class="node-label-cycle"><span>SYSTEMS</span><span>FLOW</span><span>STATE</span></b><i></i></div>
-          <div class="system-node node-tools" data-parallax-depth="0.58" aria-hidden="true"><span>04 / OUTPUT</span><b class="node-label-cycle"><span>TOOLS</span><span>ACTION</span><span>OUTPUT</span></b><i></i></div>
-          <div class="system-core" data-parallax-depth="0.8" aria-hidden="true"><span>X</span><small>XUEN.OS</small></div>
-          <div class="system-live-status" aria-hidden="true"><span>READY</span><span>ROUTING</span><span>PROCESSING</span><span>IDLE</span></div>
-          <span class="signal-dot dot-one" aria-hidden="true"></span>
-          <span class="signal-dot dot-two" aria-hidden="true"></span>
-          <span class="signal-dot dot-three" aria-hidden="true"></span>
-          <div class="system-readout" aria-hidden="true"><span>ACTIVE SIGNAL</span><b>04</b></div>
-          <div class="system-label-cycle" aria-hidden="true"><span>AI</span><span>PYTHON</span><span>SYSTEMS</span><span>TOOLS</span></div>
-        </div>
-        <figcaption><span>01 / THE SYSTEM</span><span>CALM MOTION · LIVE SIGNALS</span></figcaption>
-      </figure>
+      <div class="glass-hero__footer">
+        <p>Based in Malaysia</p>
+      </div>
+
     </section>
 
     <div class="ticker" aria-hidden="true">
@@ -98,12 +81,12 @@
       <div class="section-index reveal"><span>02</span> / CURRENT FOCUS</div>
       <div class="section-heading reveal">
         <h2 id="focus-title">What’s running<br><em>right now.</em></h2>
-        <span class="updated">LAST UPDATED / AUG 2026</span>
+        <span class="updated">LAST UPDATED / OCT 2026</span>
       </div>
       <div class="focus-list reveal">
-        <article><span class="focus-num">01</span><div><h3>AI WORKFLOWS</h3><p>Designing small, reliable systems that make intelligence genuinely useful.</p></div><span class="focus-state">IN PROGRESS</span></article>
-        <article><span class="focus-num">02</span><div><h3>PYTHON TOOLING</h3><p>Automating the repetitive so humans can stay with the interesting.</p></div><span class="focus-state">BUILDING</span></article>
-        <article><span class="focus-num">03</span><div><h3>INTERFACE CRAFT</h3><p>Making complex capability feel simple, obvious, and quietly delightful.</p></div><span class="focus-state">ALWAYS</span></article>
+        <article><span class="focus-num">01</span><div><h3><a href="#home">XUEN.OS</a></h3><p>Refining the portfolio, project system, and Liquid Obsidian interface into one coherent experience.</p></div><span class="focus-state">BUILDING</span></article>
+        <article><span class="focus-num">02</span><div><h3><a href="goods-receiving.html">GOODS RECEIVING SYSTEM</a></h3><p>A browser-testable receiving workflow for incoming materials, delivery tracking, and operational records.</p></div><span class="focus-state">DEMO READY</span></article>
+        <article><span class="focus-num">03</span><div><h3><a href="x-garage.html">X GARAGE</a></h3><p>A personal real-time 3D vehicle experience focused on form, lighting, materials, and camera views.</p></div><span class="focus-state">LIVE EXPERIENCE</span></article>
       </div>
     </section>
 
@@ -127,9 +110,16 @@
           <div class="project-info"><h3>Index</h3><p>A personal research system for collecting less and understanding more.</p><span>LOCAL-FIRST / SEARCH / WRITING</span></div>
         </article>
         <a class="project-card project-wide project-link-card reveal" id="xgarage-project" href="x-garage.html" aria-label="View X Garage case study">
-          <div class="project-top"><span>04 / INTERACTIVE VEHICLE PLATFORM</span><span>2026</span></div>
-          <div class="project-visual xgarage-project-visual"><img src="assets/x-garage/x-garage-live.png" alt="X Garage live interactive 3D vehicle scene" width="1000" height="625" loading="lazy"></div>
-          <div class="project-info"><h3>X Garage</h3><p>An expanding interactive garage for exploring vehicles through configurable, cinematic 3D experiences.</p><span>3D WEB / SCALABLE SYSTEM / PRODUCT EXPERIENCE <b>VIEW CASE STUDY ↗</b></span></div>
+          <div class="project-top"><span>04 / PERSONAL 3D VEHICLE EXPERIENCE</span><span>2026</span></div>
+          <div class="project-visual xgarage-project-visual"><div class="xgarage-card-crop"><img src="assets/x-garage/x-garage-front-live-hd.jpg" alt="BMW M2 G87 in the live X Garage front three-quarter scene" width="1905" height="1191" loading="lazy"></div></div>
+          <div class="project-info"><h3>X Garage</h3><p>A personal real-time 3D experience for studying vehicle form, lighting, materials, and camera views in the browser.</p><span>REAL-TIME 3D / CAMERA / LIGHTING <b>VIEW CASE STUDY ↗</b></span></div>
+        </a>
+        <a class="project-card project-wide project-link-card goods-project-card reveal" id="goods-receiving-project" href="goods-receiving.html" aria-label="Open the Goods Receiving System interactive project preview">
+          <div class="project-top"><span>05 / INTERNAL OPERATIONS TOOL</span><span>2026</span></div>
+          <div class="project-visual goods-project-visual">
+            <img src="assets/goods-receiving/goods-receiving-dashboard.jpg" alt="Goods Receiving System demo dashboard with fictional furniture-factory receiving records" width="1113" height="1227" loading="lazy">
+          </div>
+          <div class="project-info"><h3>Goods Receiving System</h3><p>A practical internal tool for managing incoming materials, tracking deliveries, and maintaining receiving records in a furniture manufacturing workflow.</p><span>WORKFLOW / RECORDS / OPERATIONS <b>OPEN INTERACTIVE PREVIEW ↗</b></span></div>
         </a>
       </div>
     </section>
@@ -151,17 +141,24 @@
       <p class="eyebrow reveal">05 / OPEN CHANNEL</p>
       <div class="contact-inner reveal">
         <p>Have a useful problem?</p>
-        <a href="mailto:hello@xuen.os">LET’S TALK<span>↗</span></a>
+        <a href="https://wa.me/CXUENNN" target="_blank" rel="noopener noreferrer" aria-label="Chat with CXUENNN on WhatsApp">LET’S TALK<span>↗</span></a>
       </div>
     </section>
   </main>
 
   <footer>
-    <a class="logo" href="#home"><span class="logo-glyph">X</span><span>XUEN.OS</span></a>
+    <a class="logo" href="#home" aria-label="XuenLab home"><img src="assets/xuenlab-logo-light.svg" alt="XuenLab" width="300" height="83"></a>
     <p>DESIGNED &amp; BUILT WITH INTENTION.</p>
     <div><span>© 2026 XUEN</span><a href="#home">BACK TO TOP ↑</a></div>
   </footer>
 
+  <div class="site-cursor" aria-hidden="true">
+    <span class="site-cursor__ring"></span>
+    <span class="site-cursor__dot"></span>
+  </div>
+
+  <noscript><style>.glass-hero { opacity: 1; } .glass-hero__content > * { opacity: 1; transform: none; }</style></noscript>
   <script src="script.js"></script>
+  <script src="liquid-glass-hero.js"></script>
 </body>
 </html>
