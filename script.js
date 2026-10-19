@@ -116,3 +116,69 @@ if (systemVisual && !reducedMotion.matches) {
     queueParallax();
   });
 }
+
+const siteCursor = document.querySelector('.site-cursor');
+const cursorRing = siteCursor?.querySelector('.site-cursor__ring');
+const cursorDot = siteCursor?.querySelector('.site-cursor__dot');
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+if (siteCursor && cursorRing && cursorDot) {
+  let cursorFrame;
+  let targetCursorX = window.innerWidth / 2;
+  let targetCursorY = window.innerHeight / 2;
+  let currentCursorX = targetCursorX;
+  let currentCursorY = targetCursorY;
+
+  const cursorEnabled = () => finePointer.matches && !reducedMotion.matches;
+  const isNativeCursorTarget = (target) => target instanceof Element && Boolean(target.closest('input, textarea, select, [contenteditable="true"]'));
+  const isInteractiveTarget = (target) => target instanceof Element && Boolean(target.closest('a, button, summary, [role="button"], [data-cursor]'));
+
+  const renderSiteCursor = () => {
+    currentCursorX += (targetCursorX - currentCursorX) * 0.16;
+    currentCursorY += (targetCursorY - currentCursorY) * 0.16;
+    siteCursor.style.transform = `translate3d(${currentCursorX.toFixed(2)}px, ${currentCursorY.toFixed(2)}px, 0)`;
+    cursorDot.style.left = `${(targetCursorX - currentCursorX).toFixed(2)}px`;
+    cursorDot.style.top = `${(targetCursorY - currentCursorY).toFixed(2)}px`;
+
+    if (Math.abs(targetCursorX - currentCursorX) > 0.05 || Math.abs(targetCursorY - currentCursorY) > 0.05) {
+      cursorFrame = window.requestAnimationFrame(renderSiteCursor);
+    } else {
+      cursorFrame = undefined;
+    }
+  };
+
+  const queueSiteCursor = () => {
+    if (!cursorFrame && cursorEnabled()) cursorFrame = window.requestAnimationFrame(renderSiteCursor);
+  };
+
+  const syncSiteCursor = () => {
+    const enabled = cursorEnabled();
+    document.documentElement.classList.toggle('has-site-cursor', enabled);
+    if (!enabled) {
+      if (cursorFrame) window.cancelAnimationFrame(cursorFrame);
+      cursorFrame = undefined;
+      siteCursor.classList.remove('is-visible', 'is-hovering');
+    }
+  };
+
+  document.addEventListener('pointermove', (event) => {
+    if (!cursorEnabled() || isNativeCursorTarget(event.target)) {
+      siteCursor.classList.remove('is-visible', 'is-hovering');
+      return;
+    }
+
+    targetCursorX = event.clientX;
+    targetCursorY = event.clientY;
+    siteCursor.classList.add('is-visible');
+    siteCursor.classList.toggle('is-hovering', isInteractiveTarget(event.target));
+    queueSiteCursor();
+  }, { passive: true });
+
+  document.addEventListener('pointerout', (event) => {
+    if (!event.relatedTarget) siteCursor.classList.remove('is-visible', 'is-hovering');
+  }, { passive: true });
+  window.addEventListener('blur', () => siteCursor.classList.remove('is-visible', 'is-hovering'));
+  reducedMotion.addEventListener?.('change', syncSiteCursor);
+  finePointer.addEventListener?.('change', syncSiteCursor);
+  syncSiteCursor();
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Goods Receiving System — a practical internal receiving tool presented as a standalone XUEN.OS project preview.">
+  <meta name="theme-color" content="#020204">
+  <title>Goods Receiving System — XUEN.OS</title>
+  <link rel="preload" href="fonts/GFS-Didot-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="goods-receiving.css">
+</head>
+<body class="goods-page">
+  <div class="boot-screen" aria-hidden="true">
+    <div class="boot-mark">X</div>
+    <div class="boot-line"><span></span></div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html#home" aria-label="XuenLab home">
+      <img src="assets/xuenlab-logo-light.svg" alt="XuenLab" width="300" height="83">
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html#home">Home</a>
+      <a class="active" href="index.html#projects">Projects</a>
+      <a href="index.html#lab">Lab</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-status"><span class="status-dot"></span> PROJECT PREVIEW</div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html#home">Home</a><a href="index.html#projects">Projects</a><a href="index.html#lab">Lab</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section class="goods-intro" aria-labelledby="goods-title">
+      <div class="goods-intro__rail">
+        <a href="index.html#projects">← Selected projects</a>
+        <span>Internal operations / 2026</span>
+      </div>
+      <div class="goods-intro__grid">
+        <div>
+          <p class="goods-kicker">Furniture manufacturing workflow</p>
+          <h1 id="goods-title">Goods<br>Receiving<br>System</h1>
+        </div>
+        <div class="goods-intro__copy">
+          <p>A practical internal tool developed to manage incoming goods, track deliveries, and maintain receiving records for a furniture manufacturing workflow.</p>
+          <p>It gives store and purchasing teams one clear place to receive materials against purchase orders, note quantity differences, follow pending deliveries, and retrieve past records.</p>
+          <dl>
+            <div><dt>Purpose</dt><dd>Daily receiving control</dd></div>
+            <div><dt>Users</dt><dd>Store, purchasing, supervisors</dd></div>
+            <div><dt>Scope</dt><dd>Lightweight operational tool</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="goods-demo-section" aria-labelledby="demo-heading">
+      <div class="goods-demo-heading">
+        <div>
+          <p class="goods-section-label">Interactive system preview</p>
+          <h2 id="demo-heading">A clear record of what arrived.</h2>
+        </div>
+        <p>This browser demo uses fictional suppliers, purchase orders, people, and receiving records. It has no login, database, or live business connection.</p>
+      </div>
+
+      <div class="grs-window" id="grs-demo">
+        <header class="grs-topbar">
+          <div class="grs-brand" aria-label="XuenLab Goods Receiving">
+            <span class="grs-brand-mark">X</span>
+            <span><b>XuenLab</b><small>Goods Receiving</small></span>
+          </div>
+          <div class="grs-topbar-actions">
+            <span class="grs-demo-badge">Demo data</span>
+            <button class="grs-avatar" type="button" aria-label="Demo user: Aina Rahman">AR</button>
+          </div>
+        </header>
+
+        <div class="grs-layout">
+          <aside class="grs-sidebar" aria-label="Goods Receiving navigation">
+            <nav>
+              <button class="grs-nav-item is-active" type="button" data-view="dashboard"><span>⌂</span>Dashboard</button>
+              <button class="grs-nav-item" type="button" data-view="receive"><span>↓</span>Receive Goods</button>
+              <button class="grs-nav-item" type="button" data-view="deliveries"><span>◇</span>Delivery Tracker</button>
+              <button class="grs-nav-item" type="button" data-view="history"><span>≡</span>Receiving History</button>
+              <button class="grs-nav-item" type="button" data-view="users"><span>○</span>Manage Users</button>
+            </nav>
+            <div class="grs-sidebar-note">
+              <span>Demo workspace</span>
+              <p>Fictional records for interface review.</p>
+            </div>
+          </aside>
+
+          <div class="grs-content">
+            <section class="grs-view is-active" data-panel="dashboard" aria-labelledby="dashboard-title">
+              <div class="grs-page-head">
+                <div><p>Monday, 19 October</p><h3 id="dashboard-title">Welcome back, Aina</h3></div>
+                <button class="grs-primary" type="button" data-route="receive">Receive goods</button>
+              </div>
+
+              <div class="grs-notice"><b>Demo preview</b><span>All names, suppliers, purchase orders, and quantities shown here are fictional.</span></div>
+
+              <div class="grs-summary" aria-label="Operational summary">
+                <article><span>Due today</span><strong id="metric-due">4</strong><small>scheduled deliveries</small></article>
+                <article><span>Awaiting receipt</span><strong id="metric-awaiting">7</strong><small>open purchase orders</small></article>
+                <article><span>Received today</span><strong id="metric-received">3</strong><small>completed receipts</small></article>
+                <article><span>Needs review</span><strong>1</strong><small>quantity difference</small></article>
+              </div>
+
+              <div class="grs-dashboard-grid">
+                <section class="grs-card grs-next-deliveries">
+                  <div class="grs-card-head"><div><span>Delivery tracker</span><h4>Expected next</h4></div><button type="button" data-route="deliveries">View all</button></div>
+                  <div class="grs-delivery-compact">
+                    <button type="button" data-route="deliveries"><time>09:30</time><span><b>Northstar Textiles</b><small>PO-FIC-260184 · Upholstery fabric</small></span><em class="status status-due">Due today</em></button>
+                    <button type="button" data-route="deliveries"><time>11:00</time><span><b>Oakline Components</b><small>PO-FIC-260191 · Beech wood frames</small></span><em class="status status-transit">In transit</em></button>
+                    <button type="button" data-route="deliveries"><time>14:30</time><span><b>Meridian Foam Works</b><small>PO-FIC-260197 · Seat foam sets</small></span><em class="status status-due">Due today</em></button>
+                  </div>
+                </section>
+
+                <section class="grs-card grs-quick-actions">
+                  <div class="grs-card-head"><div><span>Primary workflow</span><h4>What do you need to do?</h4></div></div>
+                  <button type="button" data-route="receive"><span>Record an arrival</span><small>Receive materials against a purchase order</small></button>
+                  <button type="button" data-route="history"><span>Find a receipt</span><small>Search past receiving records</small></button>
+                </section>
+              </div>
+
+              <section class="grs-card grs-activity">
+                <div class="grs-card-head"><div><span>Receiving history</span><h4>Recent activity</h4></div><button type="button" data-route="history">Open history</button></div>
+                <div class="grs-table-wrap">
+                  <table>
+                    <thead><tr><th>Receipt</th><th>Supplier</th><th>Material</th><th>Quantity</th><th>Received by</th><th>Status</th></tr></thead>
+                    <tbody id="recent-activity-body">
+                      <tr><td>GR-FIC-1048</td><td>Atlas Fittings</td><td>Black steel leg sets</td><td>120 sets</td><td>Aina Rahman</td><td><span class="status status-received">Received</span></td></tr>
+                      <tr><td>GR-FIC-1047</td><td>Meridian Foam Works</td><td>Backrest foam inserts</td><td>84 pcs</td><td>Jon Lim</td><td><span class="status status-review">Review</span></td></tr>
+                      <tr><td>GR-FIC-1046</td><td>Northstar Textiles</td><td>Graphite woven fabric</td><td>18 rolls</td><td>Aina Rahman</td><td><span class="status status-received">Received</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </section>
+
+            <section class="grs-view" data-panel="receive" aria-labelledby="receive-title" hidden>
+              <div class="grs-page-head">
+                <div><p>Primary workflow</p><h3 id="receive-title">Receive Goods</h3></div>
+                <button class="grs-secondary" type="button" data-route="dashboard">Back to dashboard</button>
+              </div>
+              <div class="grs-stepper" aria-label="Receiving steps"><span class="is-current">1 <b>Delivery details</b></span><span>2 <b>Check quantities</b></span><span>3 <b>Record receipt</b></span></div>
+              <form class="grs-receive-form" id="receive-form">
+                <section class="grs-form-card">
+                  <div class="grs-form-title"><span>1</span><div><h4>Match the delivery</h4><p>Select the purchase order shown on the supplier paperwork.</p></div></div>
+                  <div class="grs-fields">
+                    <label>Purchase order<select id="po-select" required>
+                      <option value="PO-FIC-260184">PO-FIC-260184 · Northstar Textiles</option>
+                      <option value="PO-FIC-260191">PO-FIC-260191 · Oakline Components</option>
+                      <option value="PO-FIC-260197">PO-FIC-260197 · Meridian Foam Works</option>
+                      <option value="PO-FIC-260205">PO-FIC-260205 · Atlas Fittings</option>
+                    </select></label>
+                    <label>Delivery note<input id="delivery-note" type="text" value="DN-FIC-88341" required></label>
+                    <label>Received date<input id="received-date" type="date" value="2026-10-19" required></label>
+                    <label>Received by<input type="text" value="Aina Rahman" readonly></label>
+                  </div>
+                </section>
+
+                <section class="grs-form-card">
+                  <div class="grs-form-title"><span>2</span><div><h4>Check the received quantity</h4><p>Compare the physical goods with the open purchase-order quantity.</p></div></div>
+                  <div class="grs-item-line">
+                    <div><span>Material</span><strong id="receive-material">Graphite woven fabric</strong><small id="receive-sku">FAB-GR-042 · Roll</small></div>
+                    <label>Ordered<input id="ordered-quantity" type="number" value="24" readonly></label>
+                    <label>Received<input id="received-quantity" type="number" min="0" value="24" required></label>
+                    <label>Condition<select id="condition-select"><option>Accepted</option><option>Damaged packaging</option><option>Quality review</option></select></label>
+                  </div>
+                  <label class="grs-notes">Receiving notes<textarea id="receiving-notes" rows="3" placeholder="Optional note about packaging, damage, or count differences"></textarea></label>
+                </section>
+
+                <div class="grs-form-actions"><p>Nothing is sent or stored outside this browser demo.</p><button class="grs-primary" type="submit">Review receipt</button></div>
+              </form>
+
+              <section class="grs-review" id="receipt-review" hidden aria-live="polite">
+                <div><span>Ready to record</span><h4 id="review-heading">24 rolls received from Northstar Textiles</h4><p id="review-copy">PO-FIC-260184 · Graphite woven fabric · Accepted</p></div>
+                <div><button class="grs-secondary" id="edit-receipt" type="button">Edit</button><button class="grs-primary" id="save-receipt" type="button">Save demo receipt</button></div>
+              </section>
+            </section>
+
+            <section class="grs-view" data-panel="deliveries" aria-labelledby="deliveries-title" hidden>
+              <div class="grs-page-head"><div><p>Expected arrivals</p><h3 id="deliveries-title">Delivery Tracker</h3></div><button class="grs-primary" type="button" data-route="receive">Receive goods</button></div>
+              <div class="grs-filter-row" role="group" aria-label="Filter deliveries">
+                <button class="is-active" type="button" data-filter="all">All deliveries</button><button type="button" data-filter="due">Due today</button><button type="button" data-filter="transit">In transit</button><button type="button" data-filter="delayed">Delayed</button><button type="button" data-filter="received">Received</button>
+              </div>
+              <div class="grs-delivery-list" id="delivery-list">
+                <article data-status="due"><div><time>19 Oct · 09:30</time><span class="status status-due">Due today</span></div><h4>Northstar Textiles</h4><p>PO-FIC-260184 · Graphite woven upholstery fabric</p><dl><div><dt>Expected</dt><dd>24 rolls</dd></div><div><dt>Dock</dt><dd>Bay 2</dd></div><div><dt>Contact</dt><dd>Fictional dispatch</dd></div></dl><button type="button" data-route="receive">Receive this delivery</button></article>
+                <article data-status="transit"><div><time>19 Oct · 11:00</time><span class="status status-transit">In transit</span></div><h4>Oakline Components</h4><p>PO-FIC-260191 · Beech wood sofa frames</p><dl><div><dt>Expected</dt><dd>36 frames</dd></div><div><dt>Dock</dt><dd>Bay 1</dd></div><div><dt>Vehicle</dt><dd>Fictional LRY 5821</dd></div></dl><button type="button" data-route="receive">Prepare receipt</button></article>
+                <article data-status="due"><div><time>19 Oct · 14:30</time><span class="status status-due">Due today</span></div><h4>Meridian Foam Works</h4><p>PO-FIC-260197 · HR seat foam sets</p><dl><div><dt>Expected</dt><dd>96 sets</dd></div><div><dt>Dock</dt><dd>Bay 3</dd></div><div><dt>Contact</dt><dd>Fictional dispatch</dd></div></dl><button type="button" data-route="receive">Receive this delivery</button></article>
+                <article data-status="delayed"><div><time>20 Oct · revised</time><span class="status status-review">Delayed</span></div><h4>Atlas Fittings</h4><p>PO-FIC-260205 · Zinc connector plates and bolts</p><dl><div><dt>Expected</dt><dd>600 pcs</dd></div><div><dt>Original date</dt><dd>19 Oct</dd></div><div><dt>Reason</dt><dd>Carrier rescheduled</dd></div></dl><button type="button" data-route="receive">Prepare receipt</button></article>
+                <article data-status="received"><div><time>19 Oct · 08:12</time><span class="status status-received">Received</span></div><h4>Silvergrain Timber</h4><p>PO-FIC-260176 · Kiln-dried rubberwood rails</p><dl><div><dt>Received</dt><dd>180 pcs</dd></div><div><dt>Receipt</dt><dd>GR-FIC-1049</dd></div><div><dt>By</dt><dd>Jon Lim</dd></div></dl><button type="button" data-route="history">View receipt</button></article>
+              </div>
+              <p class="grs-fiction-note">Every supplier, reference, vehicle, and delivery record above is fictional demo data.</p>
+            </section>
+
+            <section class="grs-view" data-panel="history" aria-labelledby="history-title" hidden>
+              <div class="grs-page-head"><div><p>Receiving records</p><h3 id="history-title">Receiving History</h3></div><button class="grs-primary" type="button" data-route="receive">New receipt</button></div>
+              <div class="grs-search-row"><label><span>Search records</span><input id="history-search" type="search" placeholder="Receipt, PO, supplier, or material"></label><span>Fictional demo data</span></div>
+              <section class="grs-card">
+                <div class="grs-table-wrap">
+                  <table>
+                    <thead><tr><th>Receipt</th><th>Date</th><th>Supplier</th><th>PO reference</th><th>Material</th><th>Quantity</th><th>Status</th></tr></thead>
+                    <tbody id="history-body">
+                      <tr><td>GR-FIC-1049</td><td>19 Oct 2026</td><td>Silvergrain Timber</td><td>PO-FIC-260176</td><td>Rubberwood rails</td><td>180 pcs</td><td><span class="status status-received">Received</span></td></tr>
+                      <tr><td>GR-FIC-1048</td><td>19 Oct 2026</td><td>Atlas Fittings</td><td>PO-FIC-260169</td><td>Black steel leg sets</td><td>120 sets</td><td><span class="status status-received">Received</span></td></tr>
+                      <tr><td>GR-FIC-1047</td><td>18 Oct 2026</td><td>Meridian Foam Works</td><td>PO-FIC-260162</td><td>Backrest foam inserts</td><td>84 pcs</td><td><span class="status status-review">Review</span></td></tr>
+                      <tr><td>GR-FIC-1046</td><td>18 Oct 2026</td><td>Northstar Textiles</td><td>PO-FIC-260158</td><td>Graphite woven fabric</td><td>18 rolls</td><td><span class="status status-received">Received</span></td></tr>
+                      <tr><td>GR-FIC-1045</td><td>17 Oct 2026</td><td>Oakline Components</td><td>PO-FIC-260149</td><td>Beech arm frames</td><td>40 pairs</td><td><span class="status status-received">Received</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </section>
+
+            <section class="grs-view" data-panel="users" aria-labelledby="users-title" hidden>
+              <div class="grs-page-head"><div><p>Demo access list</p><h3 id="users-title">Manage Users</h3></div><button class="grs-secondary" id="invite-demo-user" type="button">Add demo user</button></div>
+              <div class="grs-notice"><b>Preview only</b><span>Roles below demonstrate interface states. No accounts or credentials are created.</span></div>
+              <section class="grs-card grs-users-card">
+                <div class="grs-user-row"><span class="grs-user-avatar">AR</span><div><b>Aina Rahman</b><small>aina.rahman@example.test</small></div><select aria-label="Role for Aina Rahman"><option>Receiving clerk</option><option>Supervisor</option><option>Viewer</option></select><em>Active</em></div>
+                <div class="grs-user-row"><span class="grs-user-avatar">JL</span><div><b>Jon Lim</b><small>jon.lim@example.test</small></div><select aria-label="Role for Jon Lim"><option>Receiving clerk</option><option>Supervisor</option><option>Viewer</option></select><em>Active</em></div>
+                <div class="grs-user-row"><span class="grs-user-avatar">NS</span><div><b>Nadia Salleh</b><small>nadia.salleh@example.test</small></div><select aria-label="Role for Nadia Salleh"><option>Supervisor</option><option>Receiving clerk</option><option>Viewer</option></select><em>Active</em></div>
+                <div class="grs-user-row"><span class="grs-user-avatar">KW</span><div><b>Kelvin Wong</b><small>kelvin.wong@example.test</small></div><select aria-label="Role for Kelvin Wong"><option>Viewer</option><option>Receiving clerk</option><option>Supervisor</option></select><em>Active</em></div>
+              </section>
+            </section>
+          </div>
+        </div>
+        <div class="grs-toast" id="grs-toast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="goods-notes" aria-labelledby="workflow-title">
+      <div><p class="goods-section-label">Practical workflow</p><h2 id="workflow-title">Built around the receiving desk.</h2></div>
+      <div class="goods-notes__list">
+        <article><span>01</span><div><h3>Match</h3><p>Select the purchase order carried by the delivery and confirm the supplier reference.</p></div></article>
+        <article><span>02</span><div><h3>Check</h3><p>Compare ordered and received quantities, then note condition or count differences.</p></div></article>
+        <article><span>03</span><div><h3>Record</h3><p>Create a traceable receiving record that purchasing and store teams can retrieve later.</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html#home" aria-label="XuenLab home"><img src="assets/xuenlab-logo-light.svg" alt="XuenLab" width="300" height="83"></a>
+    <p>STANDALONE PROJECT PREVIEW.</p>
+    <div><span>© 2026 XUEN</span><a href="#goods-title">BACK TO TOP ↑</a></div>
+  </footer>
+
+  <div class="site-cursor" aria-hidden="true"><span class="site-cursor__ring"></span><span class="site-cursor__dot"></span></div>
+
+  <script src="script.js"></script>
+  <script src="goods-receiving.js"></script>
+</body>
+</html>
