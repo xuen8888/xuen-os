@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Decision Lens by XUEN.OS — simulate financial what-if scenarios over time, locally in your browser.">
+  <meta name="theme-color" content="#020204">
+  <title>Decision Lens — What-if Simulator — XUEN.OS</title>
+  <link rel="preload" href="fonts/GFS-Didot-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="decision-lens.css">
+</head>
+<body class="decision-page">
+  <div class="boot-screen" aria-hidden="true">
+    <div class="boot-mark">X</div>
+    <div class="boot-line"><span></span></div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html#home" aria-label="XuenLab home">
+      <img src="assets/xuenlab-logo-light.svg" alt="XuenLab" width="300" height="83">
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#projects">Projects</a>
+      <a class="active" href="index.html#lab">Lab</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-status"><span class="status-dot"></span> LOCAL SIMULATOR</div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html#home">Home</a><a href="index.html#projects">Projects</a><a href="index.html#lab">Lab</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a>
+  </nav>
+
+  <main class="decision-shell">
+    <section class="decision-hero" id="decision-hero" aria-labelledby="decision-lens-title">
+      <div class="decision-hero__rail">
+        <a href="index.html#lab">← Small experiments</a>
+        <span>LAB_011 / WHAT-IF SIMULATOR</span>
+      </div>
+      <div class="decision-hero__content">
+        <div>
+          <p class="decision-kicker">A local financial scenario instrument</p>
+          <h1 id="decision-lens-title">Decision<br>Lens</h1>
+        </div>
+        <div class="decision-hero__intro">
+          <p>Change an assumption. See the decision move.</p>
+          <p>Model two financial paths, find the crossover, and reveal which assumptions can change the conclusion.</p>
+          <a href="#decision-workspace">Run a scenario <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="decision-hero__trace" aria-hidden="true">
+        <svg viewBox="0 0 1000 90" preserveAspectRatio="none">
+          <path d="M0 66 C170 66 245 58 354 58 S540 68 650 42 825 20 1000 20"></path>
+          <path d="M0 30 C155 30 240 36 360 37 S540 35 650 48 820 66 1000 66"></path>
+          <line x1="650" y1="8" x2="650" y2="80"></line>
+          <circle cx="650" cy="42" r="4"></circle>
+        </svg>
+      </div>
+    </section>
+
+    <section class="decision-workspace" id="decision-workspace" aria-labelledby="workspace-title">
+      <div class="decision-toolbar">
+        <div class="decision-toolbar__status">
+          <p id="workspace-title">Scenario model</p>
+          <span id="save-status" role="status" aria-live="polite">Saved locally</span>
+        </div>
+        <div class="decision-template-switch" role="tablist" aria-label="Decision template">
+          <button type="button" role="tab" id="template-buy-rent" data-template="buyRent" aria-selected="true">Buy vs rent</button>
+          <button type="button" role="tab" id="template-career" data-template="career" aria-selected="false">Career / education</button>
+        </div>
+        <button type="button" class="decision-reset" id="reset-scenario">Reset example</button>
+      </div>
+
+      <div class="decision-title-field">
+        <label for="decision-title">Question</label>
+        <textarea id="decision-title" rows="1" maxlength="100" autocomplete="off"></textarea>
+        <span>Illustrative assumptions only. Replace them with your own estimates.</span>
+      </div>
+
+      <nav class="decision-section-nav" aria-label="Decision Lens sections">
+        <a href="#decision-setup"><span>01</span>Setup</a>
+        <a href="#live-simulation"><span>02</span>Live simulation</a>
+        <a href="#sensitivity"><span>03</span>Sensitivity</a>
+        <a href="#scenario-comparison"><span>04</span>Scenarios</a>
+        <a href="#saved-snapshots"><span>05</span>Snapshots</a>
+      </nav>
+
+      <div class="decision-simulator">
+        <aside class="decision-assumptions" id="decision-setup" aria-labelledby="assumptions-heading">
+          <div class="decision-panel-heading">
+            <span>01</span>
+            <div><h2 id="assumptions-heading">Shape the scenario</h2><p>Amounts use Malaysian ringgit. Zero is a valid assumption; blank fields pause the result.</p></div>
+          </div>
+          <div class="decision-scenario-editor">
+            <div><span>Editing</span><strong id="active-scenario-label">Base case</strong></div>
+            <div class="decision-scenario-tabs" id="scenario-editor-tabs" role="tablist" aria-label="Scenario being edited">
+              <button type="button" role="tab" data-scenario="pessimistic" aria-selected="false">Pessimistic</button>
+              <button type="button" role="tab" data-scenario="base" aria-selected="true">Base</button>
+              <button type="button" role="tab" data-scenario="optimistic" aria-selected="false">Optimistic</button>
+            </div>
+            <p id="scenario-editor-note">Your primary assumptions. Generated scenarios update from this base.</p>
+          </div>
+          <form id="assumption-form" novalidate></form>
+        </aside>
+
+        <section class="decision-stage" id="live-simulation" aria-labelledby="simulation-heading">
+          <div class="decision-stage__top">
+            <div class="decision-panel-heading">
+              <span>02</span>
+              <div><h2 id="simulation-heading">Financial trajectory</h2><p id="simulation-context">Cumulative cost across the selected horizon.</p></div>
+            </div>
+            <div class="decision-legend" id="chart-legend" aria-label="Chart legend"></div>
+          </div>
+
+          <div id="simulation-result" aria-live="polite"></div>
+
+          <div class="decision-chart-shell">
+            <div class="decision-chart-inspector" id="chart-inspector" aria-live="polite"></div>
+            <div class="decision-chart-frame" id="chart-frame">
+              <svg id="timeline-chart" viewBox="0 0 900 450" role="img" aria-labelledby="chart-title chart-description">
+                <title id="chart-title">Financial scenario timeline</title>
+                <desc id="chart-description">Two cumulative financial outcomes plotted by month.</desc>
+              </svg>
+              <div class="decision-chart-tooltip" id="chart-tooltip" aria-hidden="true"></div>
+            </div>
+            <label class="decision-scrubber" for="inspection-month">
+              <span>Inspect month</span>
+              <input id="inspection-month" type="range" min="0" max="48" value="48" step="1">
+              <output id="inspection-output" for="inspection-month">48</output>
+            </label>
+          </div>
+
+          <div class="decision-analysis" id="analysis-cards"></div>
+        </section>
+      </div>
+
+      <div class="decision-laboratory">
+        <details class="decision-lab-section" id="sensitivity" open>
+          <summary>
+            <span>03</span>
+            <div><h2>Sensitivity analysis</h2><p>See which assumptions move the final result most—and which can reverse it.</p></div>
+            <i aria-hidden="true"></i>
+          </summary>
+          <div class="decision-lab-section__body">
+            <div class="sensitivity-toolbar">
+              <label for="sensitivity-range"><span>Test range</span><input id="sensitivity-range" type="range" min="5" max="50" step="5" value="20"><output id="sensitivity-range-output" for="sensitivity-range">±20%</output></label>
+              <p>Proportional changes are illustrative stress tests, not predictions.</p>
+            </div>
+            <div class="sensitivity-insight" id="sensitivity-insight" aria-live="polite"></div>
+            <div class="sensitivity-chart" id="sensitivity-chart" aria-label="Ranked sensitivity tornado chart"></div>
+          </div>
+        </details>
+
+        <details class="decision-lab-section" id="scenario-comparison">
+          <summary>
+            <span>04</span>
+            <div><h2>Scenario comparison</h2><p>Compare an illustrative pessimistic, base, and optimistic case side by side.</p></div>
+            <i aria-hidden="true"></i>
+          </summary>
+          <div class="decision-lab-section__body">
+            <div class="scenario-comparison-note"><strong>Perspective: Option B</strong><span id="scenario-perspective-note">Optimistic means assumptions that improve Option B’s relative result; pessimistic means the opposite.</span></div>
+            <div class="scenario-consistency" id="scenario-consistency" aria-live="polite"></div>
+            <div class="scenario-result-grid" id="scenario-result-grid"></div>
+          </div>
+        </details>
+
+        <details class="decision-lab-section" id="saved-snapshots">
+          <summary>
+            <span>05</span>
+            <div><h2>Saved snapshots</h2><p>Keep named configurations, restore them later, or compare two assumption sets.</p></div>
+            <i aria-hidden="true"></i>
+          </summary>
+          <div class="decision-lab-section__body">
+            <form class="snapshot-save" id="snapshot-save-form">
+              <label for="snapshot-name">Snapshot name</label>
+              <input id="snapshot-name" type="text" maxlength="50" autocomplete="off" placeholder="e.g. Conservative estimate" required>
+              <button type="submit">Save current assumptions</button>
+            </form>
+            <div class="snapshot-list" id="snapshot-list"></div>
+            <div class="snapshot-compare" id="snapshot-compare">
+              <div class="snapshot-compare__controls">
+                <label>Compare<select id="snapshot-compare-left" aria-label="First snapshot to compare"></select></label>
+                <span>against</span>
+                <label><select id="snapshot-compare-right" aria-label="Second snapshot to compare"></select></label>
+              </div>
+              <div id="snapshot-comparison-result" aria-live="polite"></div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="decision-method" aria-labelledby="method-title">
+      <p>Calculation</p>
+      <div>
+        <h2 id="method-title">Assumptions in.<br>Arithmetic out.</h2>
+        <p id="method-copy">Decision Lens adds each option’s starting cost and monthly cost across the selected horizon. Every advanced analysis reuses the same simulation.</p>
+      </div>
+      <div class="decision-formula" id="method-formula" aria-label="Current calculation formula"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html#home" aria-label="XuenLab home"><img src="assets/xuenlab-logo-light.svg" alt="XuenLab" width="300" height="83"></a>
+    <p>WHAT CHANGES IF THE ASSUMPTIONS CHANGE?</p>
+    <div><span>© 2026 XUEN</span><a href="#decision-hero">BACK TO TOP ↑</a></div>
+  </footer>
+
+  <div class="decision-toast" id="decision-toast" role="status" aria-live="polite"></div>
+  <div class="site-cursor" aria-hidden="true"><span class="site-cursor__ring"></span><span class="site-cursor__dot"></span></div>
+
+  <noscript><div class="decision-noscript">Decision Lens needs JavaScript to run and save simulations.</div></noscript>
+  <script src="script.js"></script>
+  <script src="decision-lens.js"></script>
+</body>
+</html>

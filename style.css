@@ -474,9 +474,9 @@ h2 { font-size: clamp(60px, 7.3vw, 116px); line-height: .91; letter-spacing: -.0
 .text-button { padding: 0 0 8px; background: none; border: 0; border-bottom: 1px solid #555; font: 9px var(--mono); cursor: pointer; }
 .text-button span { display: inline-block; margin-left: 30px; transition: rotate .4s; }
 .text-button:hover span { rotate: 180deg; }
-.lab-stack article { display: grid; grid-template-columns: 75px 1fr auto; gap: 20px; padding: 28px 0; border-top: 1px solid #333; align-items: center; transition: padding .25s, background .25s; }
-.lab-stack article:hover { padding-left: 14px; padding-right: 14px; background: #191917; }
-.lab-stack > article > span:first-child { font: 8px var(--mono); color: #777; }
+.lab-stack > :is(article, .lab-entry) { display: grid; grid-template-columns: 75px 1fr auto; gap: 20px; padding: 28px 0; border-top: 1px solid #333; align-items: center; transition: padding .25s, background .25s; }
+.lab-stack > :is(article, .lab-entry):hover { padding-left: 14px; padding-right: 14px; background: #191917; }
+.lab-stack > :is(article, .lab-entry) > span:first-child { font: 8px var(--mono); color: #777; }
 .lab-stack h3 { margin: 0 0 7px; font-size: 20px; font-weight: 500; }
 .lab-stack p { margin: 0; font-size: 10px; color: #777; }
 .lab-arrow { font-size: 17px; }
@@ -690,7 +690,7 @@ footer > div { justify-self: end; display: flex; gap: 24px; }
   .project-link-card .project-info > span { align-items: start; flex-direction: column; }
   .xgarage-project-visual { height: auto; aspect-ratio: 1 / 1; }
   .lab-layout { grid-template-columns: 1fr; gap: 70px; }
-  .lab-stack article { grid-template-columns: 55px 1fr auto; }
+  .lab-stack > :is(article, .lab-entry) { grid-template-columns: 55px 1fr auto; }
   .contact { min-height: 55vh; }
   .contact-inner a { font-size: 18vw; }
   footer { grid-template-columns: 1fr auto; gap: 28px; }
@@ -1021,9 +1021,9 @@ h2 em,
 .lab-intro p { color: #8490a6; font-size: 14px; }
 .text-button { color: #dce7fb; border-color: rgba(113,231,255,.32); }
 .text-button:hover { color: var(--cyan); }
-.lab-stack article { border-color: var(--line); border-radius: 16px; }
-.lab-stack article:hover { padding-left: 18px; padding-right: 18px; background: linear-gradient(90deg,rgba(36,87,255,.1),rgba(118,87,255,.035)); }
-.lab-stack > article > span:first-child { color: var(--cyan); }
+.lab-stack > :is(article, .lab-entry) { border-color: var(--line); border-radius: 16px; }
+.lab-stack > :is(article, .lab-entry):hover { padding-left: 18px; padding-right: 18px; background: linear-gradient(90deg,rgba(36,87,255,.1),rgba(118,87,255,.035)); }
+.lab-stack > :is(article, .lab-entry) > span:first-child { color: var(--cyan); }
 .lab-stack h3 { color: #eef4ff; }
 .lab-stack p { color: #77839a; }
 .lab-arrow { color: var(--cyan); }
@@ -1137,6 +1137,6 @@ footer a:hover { color: var(--cyan); }
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .project-card,.focus-list article,.lab-stack article,.contact-inner a { transition: none; }
+  .project-card,.focus-list article,.lab-stack > :is(article, .lab-entry),.contact-inner a { transition: none; }
   .goods-project-visual img { transition: none; }
 }
